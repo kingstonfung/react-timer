@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { connect } from 'react-redux';
+
+import TimerWidget from './containers/TimerWidget/TimerWidget';
+import { readLocalStorageTimeData } from './store/actions/storageAccess';
+
 class App extends Component {
+  componentDidMount() {
+    this.props.getLocalStorageTimeRecord();
+  }
+
   render() {
+    return (
+      <TimerWidget />
+    )
+    /*
     return (
       <div className="App">
         <header className="App-header">
@@ -15,7 +27,20 @@ class App extends Component {
         </p>
       </div>
     );
+    */
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    time: state.time
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getLocalStorageTimeRecord: () => dispatch(readLocalStorageTimeData())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
