@@ -13,20 +13,3 @@ export const writeToLocalStorage = () => {
   };
 };
 */
-
-export const getTimeFromLS = () => {
-  const timeData = localStorage.getItem('time') || 0;
-  return parseFloat(timeData);
-}
-
-export const getRunningFromLS = () => {
-  return localStorage.getItem('running') || false;
-}
-
-export const readLocalStorageTimeData = () => {
-  return {
-    type: actionTypes.READ_FROM_LOCAL_STORAGE,
-    time: getTimeFromLS(),
-    running: getRunningFromLS()
-  };
-}
