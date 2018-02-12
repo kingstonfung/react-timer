@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 
 import TimerWidget from './containers/TimerWidget/TimerWidget';
-import { readLocalStorageTimeData } from './store/actions/storageAccess';
+import { readLocalStorageTimeData } from './store/actions/timerActions';
 
 class App extends Component {
   componentDidMount() {
